@@ -1,26 +1,17 @@
 import './personal.scss'
+import {CVPersonal} from "../types.tsx";
 
-interface CVData {
-    photo: string;
-    name: string;
-    lastName: string;
-    position: string;
+type Props = {
+    data: CVPersonal
 }
 
-const cvData: CVData = {
-    photo: "https://placehold.co/400x400?text=RK",
-    name: "Rafał",
-    lastName: "Kuchta",
-    position: "Developer",
-}
-
-const Personal = () => (
+const Personal = ({ data: {name, lastName, position, photo } }: Props) => (
     <>
         <aside className='cv-personal'>
             <h2>Personal data</h2>
-            <img className='cv-photo' src={cvData.photo} alt={`${cvData.name} ${cvData.lastName} profile photo`}/>
-            <p>{cvData.name} {cvData.lastName}</p>
-            <small>{cvData.position}</small>
+            <img className='cv-photo' src={photo} alt={`${name} ${lastName} profile photo`}/>
+            <p>{name} {lastName}</p>
+            <small>{position}</small>
         </aside>
     </>
 )
